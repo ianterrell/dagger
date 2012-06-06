@@ -1,0 +1,408 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3C151D97157FE6520026E5B9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C151D96157FE6520026E5B9 /* Foundation.framework */; };
+		3C151DA5157FE6530026E5B9 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C151DA4157FE6530026E5B9 /* SenTestingKit.framework */; };
+		3C151DA7157FE6530026E5B9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C151DA6157FE6530026E5B9 /* UIKit.framework */; };
+		3C151DA8157FE6530026E5B9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C151D96157FE6520026E5B9 /* Foundation.framework */; };
+		3C151DAB157FE6530026E5B9 /* libDaggerExt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C151D93157FE6520026E5B9 /* libDaggerExt.a */; };
+		3C151DB1157FE6530026E5B9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3C151DAF157FE6530026E5B9 /* InfoPlist.strings */; };
+		3C151DB4157FE6530026E5B9 /* DaggerExtTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C151DB3157FE6530026E5B9 /* DaggerExtTests.m */; };
+		3C151DBE157FE6EE0026E5B9 /* Structs.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C151DBD157FE6810026E5B9 /* Structs.h */; settings = {ATTRIBUTES = (); }; };
+		3C151DC1157FE7E90026E5B9 /* DaggerExt.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C151DBF157FE7E90026E5B9 /* DaggerExt.h */; };
+		3C151DC2157FE7E90026E5B9 /* DaggerExt.m in Sources */ = {isa = PBXBuildFile; fileRef = 3C151DC0157FE7E90026E5B9 /* DaggerExt.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3C151DA9157FE6530026E5B9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3C151D8A157FE6520026E5B9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3C151D92157FE6520026E5B9;
+			remoteInfo = DaggerExt;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3C151D93157FE6520026E5B9 /* libDaggerExt.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDaggerExt.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C151D96157FE6520026E5B9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3C151D9A157FE6520026E5B9 /* DaggerExt-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DaggerExt-Prefix.pch"; sourceTree = "<group>"; };
+		3C151DA3157FE6530026E5B9 /* DaggerExtTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DaggerExtTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C151DA4157FE6530026E5B9 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		3C151DA6157FE6530026E5B9 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		3C151DAE157FE6530026E5B9 /* DaggerExtTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DaggerExtTests-Info.plist"; sourceTree = "<group>"; };
+		3C151DB0157FE6530026E5B9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3C151DB2157FE6530026E5B9 /* DaggerExtTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DaggerExtTests.h; sourceTree = "<group>"; };
+		3C151DB3157FE6530026E5B9 /* DaggerExtTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DaggerExtTests.m; sourceTree = "<group>"; };
+		3C151DBD157FE6810026E5B9 /* Structs.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Structs.h; sourceTree = "<group>"; };
+		3C151DBF157FE7E90026E5B9 /* DaggerExt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaggerExt.h; sourceTree = "<group>"; };
+		3C151DC0157FE7E90026E5B9 /* DaggerExt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaggerExt.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3C151D90157FE6520026E5B9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C151D97157FE6520026E5B9 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C151D9F157FE6530026E5B9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C151DA5157FE6530026E5B9 /* SenTestingKit.framework in Frameworks */,
+				3C151DA7157FE6530026E5B9 /* UIKit.framework in Frameworks */,
+				3C151DA8157FE6530026E5B9 /* Foundation.framework in Frameworks */,
+				3C151DAB157FE6530026E5B9 /* libDaggerExt.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3C151D88157FE6520026E5B9 = {
+			isa = PBXGroup;
+			children = (
+				3C151D98157FE6520026E5B9 /* DaggerExt */,
+				3C151DAC157FE6530026E5B9 /* DaggerExtTests */,
+				3C151D95157FE6520026E5B9 /* Frameworks */,
+				3C151D94157FE6520026E5B9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3C151D94157FE6520026E5B9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3C151D93157FE6520026E5B9 /* libDaggerExt.a */,
+				3C151DA3157FE6530026E5B9 /* DaggerExtTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3C151D95157FE6520026E5B9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3C151D96157FE6520026E5B9 /* Foundation.framework */,
+				3C151DA4157FE6530026E5B9 /* SenTestingKit.framework */,
+				3C151DA6157FE6530026E5B9 /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3C151D98157FE6520026E5B9 /* DaggerExt */ = {
+			isa = PBXGroup;
+			children = (
+				3C151D99157FE6520026E5B9 /* Supporting Files */,
+				3C151DBD157FE6810026E5B9 /* Structs.h */,
+				3C151DBF157FE7E90026E5B9 /* DaggerExt.h */,
+				3C151DC0157FE7E90026E5B9 /* DaggerExt.m */,
+			);
+			path = DaggerExt;
+			sourceTree = "<group>";
+		};
+		3C151D99157FE6520026E5B9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3C151D9A157FE6520026E5B9 /* DaggerExt-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3C151DAC157FE6530026E5B9 /* DaggerExtTests */ = {
+			isa = PBXGroup;
+			children = (
+				3C151DB2157FE6530026E5B9 /* DaggerExtTests.h */,
+				3C151DB3157FE6530026E5B9 /* DaggerExtTests.m */,
+				3C151DAD157FE6530026E5B9 /* Supporting Files */,
+			);
+			path = DaggerExtTests;
+			sourceTree = "<group>";
+		};
+		3C151DAD157FE6530026E5B9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3C151DAE157FE6530026E5B9 /* DaggerExtTests-Info.plist */,
+				3C151DAF157FE6530026E5B9 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		3C151D91157FE6520026E5B9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C151DC1157FE7E90026E5B9 /* DaggerExt.h in Headers */,
+				3C151DBE157FE6EE0026E5B9 /* Structs.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		3C151D92157FE6520026E5B9 /* DaggerExt */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3C151DB7157FE6530026E5B9 /* Build configuration list for PBXNativeTarget "DaggerExt" */;
+			buildPhases = (
+				3C151D8F157FE6520026E5B9 /* Sources */,
+				3C151D90157FE6520026E5B9 /* Frameworks */,
+				3C151D91157FE6520026E5B9 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DaggerExt;
+			productName = DaggerExt;
+			productReference = 3C151D93157FE6520026E5B9 /* libDaggerExt.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		3C151DA2157FE6530026E5B9 /* DaggerExtTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3C151DBA157FE6530026E5B9 /* Build configuration list for PBXNativeTarget "DaggerExtTests" */;
+			buildPhases = (
+				3C151D9E157FE6530026E5B9 /* Sources */,
+				3C151D9F157FE6530026E5B9 /* Frameworks */,
+				3C151DA0157FE6530026E5B9 /* Resources */,
+				3C151DA1157FE6530026E5B9 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3C151DAA157FE6530026E5B9 /* PBXTargetDependency */,
+			);
+			name = DaggerExtTests;
+			productName = DaggerExtTests;
+			productReference = 3C151DA3157FE6530026E5B9 /* DaggerExtTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3C151D8A157FE6520026E5B9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 3C151D8D157FE6520026E5B9 /* Build configuration list for PBXProject "DaggerExt" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 3C151D88157FE6520026E5B9;
+			productRefGroup = 3C151D94157FE6520026E5B9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3C151D92157FE6520026E5B9 /* DaggerExt */,
+				3C151DA2157FE6530026E5B9 /* DaggerExtTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3C151DA0157FE6530026E5B9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C151DB1157FE6530026E5B9 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3C151DA1157FE6530026E5B9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3C151D8F157FE6520026E5B9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C151DC2157FE7E90026E5B9 /* DaggerExt.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3C151D9E157FE6530026E5B9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3C151DB4157FE6530026E5B9 /* DaggerExtTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3C151DAA157FE6530026E5B9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3C151D92157FE6520026E5B9 /* DaggerExt */;
+			targetProxy = 3C151DA9157FE6530026E5B9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3C151DAF157FE6530026E5B9 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3C151DB0157FE6530026E5B9 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3C151DB5157FE6530026E5B9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		3C151DB6157FE6530026E5B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3C151DB8157FE6530026E5B9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/DaggerExt.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DaggerExt/DaggerExt-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		3C151DB9157FE6530026E5B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/DaggerExt.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DaggerExt/DaggerExt-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		3C151DBB157FE6530026E5B9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DaggerExt/DaggerExt-Prefix.pch";
+				INFOPLIST_FILE = "DaggerExtTests/DaggerExtTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		3C151DBC157FE6530026E5B9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "DaggerExt/DaggerExt-Prefix.pch";
+				INFOPLIST_FILE = "DaggerExtTests/DaggerExtTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3C151D8D157FE6520026E5B9 /* Build configuration list for PBXProject "DaggerExt" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C151DB5157FE6530026E5B9 /* Debug */,
+				3C151DB6157FE6530026E5B9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3C151DB7157FE6530026E5B9 /* Build configuration list for PBXNativeTarget "DaggerExt" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C151DB8157FE6530026E5B9 /* Debug */,
+				3C151DB9157FE6530026E5B9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		3C151DBA157FE6530026E5B9 /* Build configuration list for PBXNativeTarget "DaggerExtTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3C151DBB157FE6530026E5B9 /* Debug */,
+				3C151DBC157FE6530026E5B9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3C151D8A157FE6520026E5B9 /* Project object */;
+}
