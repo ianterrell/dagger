@@ -16,7 +16,7 @@ Motion::Project::App.setup do |app|
     app.files << File.expand_path(File.dirname(__FILE__) + '/dagger/scene.rb')
     app.files << File.expand_path(File.dirname(__FILE__) + '/dagger/color.rb')
     app.files << File.expand_path(File.dirname(__FILE__) + '/dagger/square.rb')
-    
-    
+    app.files << File.expand_path(File.dirname(__FILE__) + '/dagger/opengl/vertex_data.rb')
+    app.files << File.expand_path(File.dirname(__FILE__) + '/dagger/opengl/index_data.rb')
   end
 end

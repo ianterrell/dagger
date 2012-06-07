@@ -1,67 +1,21 @@
 module Dagger
   class ArchetypicalShape
 
-    def self.vertices=(vertexArray)
-      @vertexArray = vertexArray
+    def self.vertices=(vertex_array)
+      @vertex_array = vertex_array
     end
     
-    def self.indices=(indexData)
-      @indexData = indexData
+    def self.indices=(index_array)
+      @index_array = index_array
     end
     
     def self.setup
       @setup ||= begin
-        numVertices = @vertexArray.count
-
-        vertex = @vertexArray[0]
-        @vertexSize = 0
-
-        if vertex[:position]
-          @positionVertexSize = vertex[:position].count
-          @vertexSize += @positionVertexSize
-        else
-          raise 'must have position data'
-        end
-
-        if vertex[:color]
-          @hasColor = true
-          @vertexSize += 4
-        end
-
-        if vertex[:texture]
-          @hasTexture = true
-          @vertexSize += 2
-        end
-
-        # Copy data onto heap
-        verticesPtr = Pointer.new(:float, @vertexSize * numVertices)
-        @vertexArray.each_with_index do |vertex, i|
-          vertexData = [vertex[:position], vertex[:color], vertex[:texture]].flatten.reject{|v|v.nil?}
-          vertexData.each_with_index do |component, j|
-            verticesPtr[i * @vertexSize + j] = component
-          end
-        end
-
-        # Send to OpenGL Buffer
-        vertexBufferPtr = Pointer.new(:uchar)
-        glGenBuffers(1, vertexBufferPtr)
-        @vertexBuffer = vertexBufferPtr[0]
-
-        glBindBuffer(GL_ARRAY_BUFFER, @vertexBuffer)
-        glBufferData(GL_ARRAY_BUFFER, numVertices*@vertexSize*4, verticesPtr, GL_STATIC_DRAW)
-        
-        @numIndices = @indexData.count
-        indicesPtr = Pointer.new(:uchar, @numIndices)
-        @indexData.each_with_index do |index, i|
-          indicesPtr[i] = index
-        end
-
-        indexBufferPtr = Pointer.new(:uchar)
-        glGenBuffers(1, indexBufferPtr)
-        @indexBuffer = indexBufferPtr[0]
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, @indexBuffer)
-        glBufferData(GL_ELEMENT_ARRAY_BUFFER, @numIndices*4, indicesPtr, GL_STATIC_DRAW)
-        
+        @vertex_data = OpenGL::VertexData.new(@vertex_array)
+        @vertex_data.load_buffer
+                
+        @index_data = OpenGL::IndexData.new(@index_array)
+        @index_data.load_buffer
         true
       end
     end
@@ -69,32 +23,32 @@ module Dagger
     def self.renderInScene(scene)
       self.setup
       
-      glBindBuffer(GL_ARRAY_BUFFER, @vertexBuffer)
-      glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, @indexBuffer)
+      glBindBuffer(GL_ARRAY_BUFFER, @vertex_data.buffer)
+      glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, @index_data.buffer)
       
       glEnableVertexAttribArray(GLKVertexAttribPosition)
-      glVertexAttribPointer(GLKVertexAttribPosition, @positionVertexSize, GL_FLOAT, GL_FALSE, @vertexSize*4, Pointer.magic_cookie(0))
+      glVertexAttribPointer(GLKVertexAttribPosition, @vertex_data.position_dimensions, GL_FLOAT, GL_FALSE, @vertex_data.vertex_size*4, Pointer.magic_cookie(0))
 
-      offset = @positionVertexSize      
-      if @hasColor
+      offset = @vertex_data.position_dimensions      
+      if @vertex_data.has_color?
         glEnableVertexAttribArray(GLKVertexAttribColor)
-        glVertexAttribPointer(GLKVertexAttribColor, 4, GL_FLOAT, GL_FALSE, @vertexSize*4, Pointer.magic_cookie(offset*4))
+        glVertexAttribPointer(GLKVertexAttribColor, 4, GL_FLOAT, GL_FALSE, @vertex_data.vertex_size*4, Pointer.magic_cookie(offset*4))
         offset += 4
       end
       
-      if @hasTexture
+      if @vertex_data.has_texture?
         glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
-        glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, @vertexSize*4, Pointer.magic_cookie(offset*4));
+        glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, @vertex_data.vertex_size*4, Pointer.magic_cookie(offset*4));
       end
       
-      glDrawElements(GL_TRIANGLE_FAN, @numIndices, GL_UNSIGNED_BYTE, Pointer.magic_cookie(0))
+      glDrawElements(GL_TRIANGLE_FAN, @index_data.num_indices, GL_UNSIGNED_BYTE, Pointer.magic_cookie(0))
       
       glDisableVertexAttribArray(GLKVertexAttribPosition)
-      glDisableVertexAttribArray(GLKVertexAttribColor) if @hasColor
-      glDisableVertexAttribArray(GLKVertexAttribTexCoord0) if @hasTexture
+      glDisableVertexAttribArray(GLKVertexAttribColor) if @vertex_data.has_color?
+      glDisableVertexAttribArray(GLKVertexAttribTexCoord0) if @vertex_data.has_texture?
     end
 
-    def renderInScene(scene, parent:parent)
+    def renderInScene(scene, options={})
       self.class.renderInScene(scene)
     end
   end
