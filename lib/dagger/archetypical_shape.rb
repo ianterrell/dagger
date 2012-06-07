@@ -1,21 +1,13 @@
 module Dagger
   class ArchetypicalShape
-
-    def self.vertices=(vertex_array)
-      @vertex_array = vertex_array
-    end
-    
-    def self.indices=(index_array)
-      @index_array = index_array
-    end
-    
     def self.setup
       @setup ||= begin
-        @vertex_data = OpenGL::VertexData.new(@vertex_array)
+        @vertex_data = OpenGL::VertexData.new(self.vertices)
         @vertex_data.load_buffer
                 
-        @index_data = OpenGL::IndexData.new(@index_array)
+        @index_data = OpenGL::IndexData.new(self.indices)
         @index_data.load_buffer
+        
         true
       end
     end
@@ -41,7 +33,7 @@ module Dagger
         glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, @vertex_data.vertex_size*4, Pointer.magic_cookie(offset*4));
       end
       
-      glDrawElements(GL_TRIANGLE_FAN, @index_data.num_indices, GL_UNSIGNED_BYTE, Pointer.magic_cookie(0))
+      glDrawElements(self.mode, @index_data.num_indices, GL_UNSIGNED_BYTE, Pointer.magic_cookie(0))
       
       glDisableVertexAttribArray(GLKVertexAttribPosition)
       glDisableVertexAttribArray(GLKVertexAttribColor) if @vertex_data.has_color?
