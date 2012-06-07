@@ -12,8 +12,10 @@ Motion::Project::App.setup do |app|
     
     app.vendor_project(File.expand_path(File.dirname(__FILE__) + '/../vendor/DaggerExt'), :xcode, :target => 'DaggerExt', :headers_dir => 'DaggerExt')
     
+    app.files << File.expand_path(File.dirname(__FILE__) + '/dagger/archetypical_shape.rb')
     app.files << File.expand_path(File.dirname(__FILE__) + '/dagger/scene.rb')
     app.files << File.expand_path(File.dirname(__FILE__) + '/dagger/color.rb')
+    app.files << File.expand_path(File.dirname(__FILE__) + '/dagger/square.rb')
     
     
   end

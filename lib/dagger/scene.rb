@@ -2,6 +2,15 @@ module Dagger
   class Scene < GLKViewController
     attr_accessor :clearColor
     
+    def init
+      super
+      
+      @objects = []
+      @clearColor = Color.new(1, 0, 0, 1)
+      
+      self
+    end
+    
     def viewDidLoad
       super
 
@@ -13,10 +22,6 @@ module Dagger
         # TODO: Handle error better
         puts "Failed to create OpenGL ES context"
       end
-      
-      @effect = GLKBaseEffect.alloc.init
-      
-      @clearColor ||= Color.new(1, 0, 0, 1)
     end
   
     def viewDidUnload
@@ -27,34 +32,31 @@ module Dagger
       end
       
       @context = nil
-      @effect = nil
+    end
+    
+    def <<(object)
+      @objects << object
     end
   
     def glkView(view, drawInRect:rect)   
       glClearColor(@clearColor.r, @clearColor.g, @clearColor.b, @clearColor.a)
       glClear(GL_COLOR_BUFFER_BIT)
-    
+            
+      @effect ||= GLKBaseEffect.alloc.init
       @effect.prepareToDraw
-    
-      # glBindBuffer(GL_ARRAY_BUFFER, @vertexBuffer)
-      #     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, @indexBuffer)
-      # 
-      #     glEnableVertexAttribArray(GLKVertexAttribPosition)
-      #     glVertexAttribPointer(GLKVertexAttribPosition, 3, GL_FLOAT, GL_FALSE, 9*4, Pointer.magic_cookie(0))
-      #   
-      #     glEnableVertexAttribArray(GLKVertexAttribColor)
-      #     glVertexAttribPointer(GLKVertexAttribColor, 4, GL_FLOAT, GL_FALSE, 9*4, Pointer.magic_cookie(3*4))
-      #   
-      #     glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
-      #     glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, 9*4, Pointer.magic_cookie(7*4));
-      #   
-      # glDrawElements(GL_TRIANGLES, @indices.size, GL_UNSIGNED_BYTE, Pointer.magic_cookie(0))
+      
+      @objects.each { |object| object.renderInScene(self, parent: nil) }
     end
 
     def update
+      @effect ||= GLKBaseEffect.alloc.init
+      
       # aspect = (view.bounds.size.width / view.bounds.size.height).abs
-      # projectionMatrix = GLKMatrix4MakePerspective(GLKMathDegreesToRadians(65.0), aspect, 4.0, 10.0)
-      # @effect.transform.projectionMatrix = projectionMatrix
+      projectionMatrix = GLKMatrix4MakeOrtho(-2, 2, -3, 3, 1.0, -1.0);
+      @effect.transform.projectionMatrix = projectionMatrix
+      
+      modelViewMatrix = GLKMatrix4MakeTranslation(0.0, 0.0, 0.0)   
+      @effect.transform.modelviewMatrix = modelViewMatrix
     end
   end
 end
