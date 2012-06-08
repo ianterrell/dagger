@@ -1,5 +1,5 @@
 module Dagger
-  class ArchetypicalShape
+  class ArchetypicalShape < Node
     def self.setup
       @setup ||= begin
         @vertex_data = OpenGL::VertexData.new(self.vertices)
@@ -12,7 +12,7 @@ module Dagger
       end
     end
     
-    def self.renderInScene(scene)
+    def self.render(scene)
       self.setup
       
       glBindBuffer(GL_ARRAY_BUFFER, @vertex_data.buffer)
@@ -40,8 +40,9 @@ module Dagger
       glDisableVertexAttribArray(GLKVertexAttribTexCoord0) if @vertex_data.has_texture?
     end
 
-    def renderInScene(scene, options={})
-      self.class.renderInScene(scene)
+    def render(scene, options={})
+      super
+      self.class.render(scene)
     end
   end
 end

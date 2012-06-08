@@ -1,12 +1,13 @@
 module Dagger
   class Scene < GLKViewController
-    attr_accessor :clearColor
+    attr_accessor :clear_color, :projection_matrix
     
     def init
       super
       
       @objects = []
-      @clearColor = Color.new(1, 0, 0, 1)
+      @clear_color = Color.new(1, 0, 0, 1)
+      @projection_matrix = GLKMatrix4MakeOrtho(-2, 2, -3, 3, 1.0, -1.0);
       
       self
     end
@@ -39,24 +40,16 @@ module Dagger
     end
   
     def glkView(view, drawInRect:rect)   
-      glClearColor(@clearColor.r, @clearColor.g, @clearColor.b, @clearColor.a)
+      glClearColor(@clear_color.r, @clear_color.g, @clear_color.b, @clear_color.a)
       glClear(GL_COLOR_BUFFER_BIT)
             
       @effect ||= GLKBaseEffect.alloc.init
       @effect.prepareToDraw
       
-      @objects.each { |object| object.renderInScene(self, parent: nil) }
+      @objects.each { |object| object.render(self) }
     end
 
     def update
-      @effect ||= GLKBaseEffect.alloc.init
-      
-      # aspect = (view.bounds.size.width / view.bounds.size.height).abs
-      projectionMatrix = GLKMatrix4MakeOrtho(-2, 2, -3, 3, 1.0, -1.0);
-      @effect.transform.projectionMatrix = projectionMatrix
-      
-      modelViewMatrix = GLKMatrix4MakeTranslation(0.0, 0.0, 0.0)   
-      @effect.transform.modelviewMatrix = modelViewMatrix
     end
   end
 end
