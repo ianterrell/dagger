@@ -1,48 +1,25 @@
 module Dagger
   class ArchetypicalShape < Node
+    # Must be setup before being rendered. This is a separate step to provide control over when data is loaded.
     def self.setup
-      @setup ||= begin
-        @vertex_data = OpenGL::VertexData.new(self.vertices)
-        @vertex_data.load_buffer
-                
-        @index_data = OpenGL::IndexData.new(self.indices)
-        @index_data.load_buffer
-        
-        true
-      end
+      @archetype ||= OpenGL::Drawable.new(self.vertices, self.indices, self.mode)
     end
     
-    def self.render(scene)
-      self.setup
+    def self.render_archetype
+      # TODO: The setup call should (probably) get moved out this render call and exist in a client-specific location.
+      # Arguably it could stay since it uses a single initialization via ||=, but that seems like extra overhead that we'd like
+      # to keep out of the render loop.
+      # 
+      # Anyway, it needs to happen after context is created though, and I need to decide where that's going to happen in this framework.
+      # The current location in scene#viewDidLoad is crap.
+      self.setup 
       
-      glBindBuffer(GL_ARRAY_BUFFER, @vertex_data.buffer)
-      glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, @index_data.buffer)
-      
-      glEnableVertexAttribArray(GLKVertexAttribPosition)
-      glVertexAttribPointer(GLKVertexAttribPosition, @vertex_data.position_dimensions, GL_FLOAT, GL_FALSE, @vertex_data.vertex_size*4, Pointer.magic_cookie(0))
-
-      offset = @vertex_data.position_dimensions      
-      if @vertex_data.has_color?
-        glEnableVertexAttribArray(GLKVertexAttribColor)
-        glVertexAttribPointer(GLKVertexAttribColor, 4, GL_FLOAT, GL_FALSE, @vertex_data.vertex_size*4, Pointer.magic_cookie(offset*4))
-        offset += 4
-      end
-      
-      if @vertex_data.has_texture?
-        glEnableVertexAttribArray(GLKVertexAttribTexCoord0);
-        glVertexAttribPointer(GLKVertexAttribTexCoord0, 2, GL_FLOAT, GL_FALSE, @vertex_data.vertex_size*4, Pointer.magic_cookie(offset*4));
-      end
-      
-      glDrawElements(self.mode, @index_data.num_indices, GL_UNSIGNED_BYTE, Pointer.magic_cookie(0))
-      
-      glDisableVertexAttribArray(GLKVertexAttribPosition)
-      glDisableVertexAttribArray(GLKVertexAttribColor) if @vertex_data.has_color?
-      glDisableVertexAttribArray(GLKVertexAttribTexCoord0) if @vertex_data.has_texture?
+      @archetype.render
     end
 
     def render(scene, options={})
       super
-      self.class.render(scene)
+      self.class.render_archetype
     end
   end
 end

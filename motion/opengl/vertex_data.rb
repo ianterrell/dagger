@@ -22,6 +22,8 @@ module Dagger
         @vertex_size += 2 if has_texture?
       
         copy_data(vertex_array)
+        
+        load_buffer
       end
     
       def copy_data(vertex_array)

@@ -9,6 +9,7 @@ module Dagger
     def update(dt)
     end
     
+    # Set the constant color to +[[r,g,b,a]]+, or +nil+ to stop using constant color.
     def constant_color=(color)
       if color
         @effect.useConstantColor = true

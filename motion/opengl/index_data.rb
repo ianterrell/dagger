@@ -6,6 +6,7 @@ module Dagger
       def initialize(index_array)
         @num_indices = index_array.count
         copy_data(index_array)
+        load_buffer
       end
     
       def copy_data(index_array)
