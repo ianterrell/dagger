@@ -16,3 +16,7 @@ xcuserdata
 profile
 *.moved-aside
 *.DS_Store
+
+DaggerExt/DaggerExt.bridgesupport
+DaggerExt/build-iPhoneSimulator/
+DaggerExt/build/
